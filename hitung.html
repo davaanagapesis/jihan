@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hitung Usia</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+      transform: scale(1.1);
+    }
+
+    .btn:active {
+      background-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hitung Usia</h1>
+    <button onclick="hitungUsia()" class="btn">Hitung Usia Anda</button>
+  </div>
+
+  <script>
+    function hitungUsia() {
+      const tahunLahir = prompt("Masukkan tahun lahir Anda:");
+      if (tahunLahir) {
+        const tahunSekarang = new Date().getFullYear();
+        const usia = tahunSekarang - tahunLahir;
+        if (isNaN(usia) || usia < 0) {
+          alert("Masukkan tahun lahir yang valid!");
+        } else {
+          alert("Usia Anda adalah " + usia + " tahun.");
+        }
+      } else {
+        alert("Input tidak boleh kosong!");
+      }
+    }
+  </script>
+</body>
+</html>

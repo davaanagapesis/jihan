@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Tugas</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #007bff;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Daftar Tugas</h1>
+    <form id="to-do-form">
+      <input type="text" id="task-input" placeholder="Tambahkan tugas baru">
+      <button type="submit" class="btn btn-primary">Tambah</button>
+    </form>
+    <ul id="task-list"></ul>
+  </div>
+
+  <script>
+    const form = document.getElementById('to-do-form');
+    const taskList = document.getElementById('task-list');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const taskInput = document.getElementById('task-input');
+      if (taskInput.value) {
+        addTask(taskInput.value);
+        taskInput.value = '';
+      }
+    });
+
+    function addTask(task) {
+      const listItem = document.createElement('li');
+      listItem.textContent = task;
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Hapus';
+      deleteButton.className = 'btn btn-danger btn-sm';
+      deleteButton.addEventListener('click', () => taskList.removeChild(listItem));
+
+      listItem.appendChild(deleteButton);
+      taskList.appendChild(listItem);
+    }
+  </script>
+</body>
+</html>
